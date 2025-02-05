@@ -2,17 +2,13 @@
 
 
 Before copying the script on the various nodes, edit it and revise the value of the variables at the top NODETOOL_AUTH, MAX_SECONDS and OS_STATS_INTERVAL. Also ensure you have SYSSTAT tool installed.
-
-    adapt the variable NODETOOL_AUTH by adding the authentication options for nodetool in your environment and other options that may be needed. Empty var -> no authentication parameters
-
-    If the user that will run the script is not the same that runs the Scylla process make sure the user running the script can sudo without password (as it's a script)
-
-    The script runs for up to MAX_SECONDS seconds (default set ot 900 == 15mins). If your test runs for longer (or for less time) adapt the value accordingly make sure it covers enough time for starting the script before your test starts, and the test completes (or errors out) before the script ends
+Adapt the variable NODETOOL_AUTH by adding the authentication options for nodetool in your environment and other options that may be needed. Empty var -> no authentication parameters
+If the user that will run the script is not the same that runs the Scylla process make sure the user running the script can sudo without password (as it's a script)
+The script runs for up to MAX_SECONDS seconds (default set ot 900 == 15mins). If your test runs for longer (or for less time) adapt the value accordingly make sure it covers enough time for starting the script before your test starts, and the test completes (or errors out) before the script ends.
 
 If the test to monitor is going to run for a long time, for example 1 hour or more, you may want to lower the frequency at which the most detailed samples are taken.
 
-    SJK_INTERVAL controls the sample frequency of the nodetool sjk commands (ttop and stcap) and need to be expressed in milliseconds including the ms as in 5000ms for a 5 second sampling interval
-    OS_STATS_INTERVAL controls the sample frequency of the commands top,iostat and mpstat. It's a number of seconds between samples.
+OS_STATS_INTERVAL controls the sample frequency of the commands top,iostat and mpstat. It's a number of seconds between samples.
 
 On each node
 
