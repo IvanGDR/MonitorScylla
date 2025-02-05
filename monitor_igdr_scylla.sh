@@ -74,6 +74,19 @@ do_begin()
    df -h
    echo "..."
    lsblk --output NAME,KNAME,TYPE,MAJ:MIN,FSTYPE,SIZE,RA,MOUNTPOINT,LABEL,ROTA
+   #these are from scylla perf configurations
+   echo "cpuset.conf output..."
+   cat /etc/scylla.d/cpuset.conf
+   echo "dev-mode.conf output..."
+   cat /etc/scylla.d/dev-mode.conf
+   echo "docker.conf output..."
+   cat /etc/scylla.d/docker.conf
+   echo "housekeeping.cfg output..."
+   cat /etc/scylla.d/housekeeping.cfg
+   echo "io.conf output..."
+   cat /etc/scylla.d/io.conf
+   echo "memory.conf output..."
+   cat /etc/scylla.d/memory.conf
    #these go in their own file
    nodetool $NODETOOL_AUTH status > nodetool-status-`hostname`-$RUN_ID.out
    nodetool $NODETOOL_AUTH describecluster  > nodetool-describecluster-`hostname`-$RUN_ID.out
@@ -82,6 +95,8 @@ do_begin()
    nodetool $NODETOOL_AUTH gossipinfo  > nodetool-gossipinfo-`hostname`-$RUN_ID.out
    nodetool $NODETOOL_AUTH info  > nodetool-info-`hostname`-$RUN_ID.out
    cqlsh $CQLSH_AUTH -e "DESCRIBE FULL SCHEMA;" > schema-`hostname`-$RUN_ID.out
+   cat /etc/scylla/scylla.yaml > scylla-yaml-`hostname`-$RUN_ID.out
+   cat /etc/scylla/cassandra-rackdc.properties > cassandra-rackdc-properties-`hostname`-$RUN_ID.out
 }
 
 # the "main" code -----
