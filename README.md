@@ -4,6 +4,7 @@
 Before copying the script on the various nodes, edit it and revise the value of the variables at the top `NODETOOL_AUTH`, `MAX_SECONDS` and `OS_STATS_INTERVAL`. Also ensure you have `SYSSTAT` tool installed. 
 
 Adapt the variable NODETOOL_AUTH by adding the authentication options for nodetool in your environment and other options that may be needed. Empty var -> no authentication parameters.
+Adapt the variable CQLSH_AUTH by adding the authentication options for cqlsh in your environment and other options that may be needed. Empty var -> no authentication parameters.
 
 If the user that will run the script is not the same that runs the Scylla process make sure the user running the script can sudo without password (as it's a script).
 
