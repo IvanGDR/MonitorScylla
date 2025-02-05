@@ -94,6 +94,7 @@ do_begin()
    nodetool $NODETOOL_AUTH compactionhistory > nodetool-compactionhistory-`hostname`-$RUN_ID.out
    nodetool $NODETOOL_AUTH gossipinfo  > nodetool-gossipinfo-`hostname`-$RUN_ID.out
    nodetool $NODETOOL_AUTH info  > nodetool-info-`hostname`-$RUN_ID.out
+   nodetool $NODETOOL_AUTH listsnapshots  > nodetool-listsnapshots-`hostname`-$RUN_ID.out
    cqlsh $CQLSH_AUTH -e "DESCRIBE FULL SCHEMA;" > schema-`hostname`-$RUN_ID.out
    cat /etc/scylla/scylla.yaml > scylla-yaml-`hostname`-$RUN_ID.out
    cat /etc/scylla/cassandra-rackdc.properties > cassandra-rackdc-properties-`hostname`-$RUN_ID.out
