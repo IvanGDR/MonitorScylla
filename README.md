@@ -21,5 +21,5 @@ Set the script as executable when ready to run your test program, start the scri
 Create a compressed tarball with the content of the script dir and the complete set of ScyllaDB logs
 
 ```
-tar zcvf out-`hostname -i`-`date +%s`.tar.gz  /tmp/datastax_script
+tar zcvf out-`hostname -i`-`date +%s`.tar.gz  /tmp/scylla_script
 ```
