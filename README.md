@@ -19,5 +19,6 @@ once the program reproduces the issue
 After the test, on each node:
 create a compressed tarball with the content of the script dir and the complete set of ScyllaDB logs
 
-`tar zcvf out-`hostname -i`-`date +%s`.tar.gz  /tmp/datastax_script`
-
+```
+tar zcvf out-`hostname -i`-`date +%s`.tar.gz  /tmp/datastax_script
+```
