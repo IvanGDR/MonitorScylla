@@ -1,4 +1,4 @@
-# MonitorScylla
+# MonitorScylla - monitor_igdr_scylla.sh
 
 
 Before copying the script on the various nodes, edit it and revise the value of the variables at the top `NODETOOL_AUTH`, `MAX_SECONDS` and `OS_STATS_INTERVAL`. Also ensure you have `SYSSTAT` tool installed. 
