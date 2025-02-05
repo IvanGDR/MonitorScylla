@@ -50,7 +50,7 @@ do_tablestats() {
 }
 
 do_netstats() {
-   sleep 3;while [ 1 ];do echo; $isodate; echo '=========='; nodetool $NODETOOL_AUTH netstats; sleep 15; done >> dse_netstats-`hostname`-$RUN_ID.out
+   sleep 3;while [ 1 ];do echo; $isodate; echo '=========='; nodetool $NODETOOL_AUTH netstats; sleep 15; done >> netstats-`hostname`-$RUN_ID.out
 }
 
 do_top_cpu_procs () {
