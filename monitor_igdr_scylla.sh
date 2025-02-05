@@ -4,6 +4,12 @@
 # and other options that may be needed ! Empty var -> no authentication parameters
 NODETOOL_AUTH=""
 
+# IMPORTANT: adapt the variable CQLSH_AUTH by adding the authentication options for cqlsh in your environment
+# e.g. CQLSH_AUTH="-u <your user> -p <your password> --ssl --cqlsh=/path to your file/cqlshrc"
+# and other options that may be needed ! Empty var -> no authentication parameters
+CQLSH_AUTH=""
+
+
 #the script will end itself after this amount of seconds if no Ctrl-C received
 MAX_SECONDS=900
 
@@ -75,6 +81,7 @@ do_begin()
    nodetool $NODETOOL_AUTH compactionhistory > nodetool-compactionhistory-`hostname`-$RUN_ID.out
    nodetool $NODETOOL_AUTH gossipinfo  > nodetool-gossipinfo-`hostname`-$RUN_ID.out
    nodetool $NODETOOL_AUTH info  > nodetool-info-`hostname`-$RUN_ID.out
+   cqlsh $CQLSH_AUTH -e "DESCRIBE FULL SCHEMA;" > schema-`hostname`-$RUN_ID.out
 }
 
 # the "main" code -----
@@ -82,7 +89,6 @@ do_begin()
 #check if sudo is needed and if it works
 if [ $WHOAMI != $SCYLLA_OWNER ] ; then
    echo "current user $WHOAMI is not the same as the SCYLLA process owner $SCYLLA_OWNER"
-   #JSTACK_USES_SUDO=1
 fi     
 
 echo "gather-begin"
