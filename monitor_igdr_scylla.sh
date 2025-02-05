@@ -9,6 +9,8 @@ NODETOOL_AUTH=""
 # and other options that may be needed ! Empty var -> no authentication parameters
 CQLSH_AUTH=""
 
+# days for logs. Increase it if not covering the time of the issue under investigation
+DAY_LOGS=3
 
 #the script will end itself after this amount of seconds if no Ctrl-C received
 MAX_SECONDS=900
@@ -32,8 +34,11 @@ WHOAMI=`whoami`
 trap ctrl_c INT
 function ctrl_c() {
    echo "CTRL-C pressed. Terminating background activity"
-   #kill $(jobs -p)
-    kill -TERM -- -$$
+   # Capturing logs before closing
+   echo "capturing logs before finishing"
+   journalctl _COMM=scylla --since "$DAY_LOGS days ago" > scylla-logs-`hostname`-$RUN_ID.out
+   # terminating
+   kill -TERM -- -$$
    do_end
 }
 
